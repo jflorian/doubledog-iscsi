@@ -1,0 +1,17 @@
+{
+  "name": "jflorian-iscsi",
+  "version": "0.1.0",
+  "author": "jflorian",
+  "summary": "This Puppet module provides management of iSCSI initiators and targets.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/jflorian/jflorian-iscsi",
+  "project_page": "https://github.com/jflorian/jflorian-iscsi",
+  "issues_url": "https://github.com/jflorian/jflorian-iscsi/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+

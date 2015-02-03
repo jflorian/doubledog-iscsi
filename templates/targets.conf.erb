@@ -1,0 +1,11 @@
+# This file is managed by puppet.
+#
+# Origin: modules/iscsi/templates/targets.conf.erb
+
+default-driver iscsi
+
+<target <%= @_iqn %>>
+    backing-store <%= @backing %>
+    incominguser <%= @user %> <%= password %>
+    initiator-address <%= @ipaddress %>
+</target>
