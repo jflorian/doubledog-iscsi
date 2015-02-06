@@ -45,9 +45,9 @@
 
 define iscsi::target (
         $backing,
-        $password,
-        $user,
         $ipaddress,
+        $user,
+        $password,
         $iqn=undef,
         $ensure='present',
     ) {

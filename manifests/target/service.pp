@@ -1,5 +1,3 @@
-# modules/iscsi/manifests/target/service.pp
-#
 # == Class: iscsi::target::service
 #
 # Manages the iSCSI target service on a host.
