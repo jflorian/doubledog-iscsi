@@ -16,23 +16,40 @@
 ## Overview
 
 Presently this module allows you to manage iSCSI targets using
-scsi-target-utils.  Additional support is coming soon for initiators as well.
-It has been developed against Fedora 21 using Puppet-3.6.
+scsi-target-utils and iSCSI initiators using iscsi-initiator-utils.  It has
+been developed against Fedora 21 using Puppet-3.6.
 
 ## Module Description
 
 Using the iscsi::target definition from this module you can quickly provision
 an iSCSI target on your network.  This is useful if you have some storage, be
 it a file or some block-device that you want to make available over a network.
-An iSCSI initiator would connect to this target and at that end you have what
+Any iSCSI initiator would connect to this target and at that end you have what
 appears to be a regular SCSI storage device.
 
-This module will install the necessary packages, manage target configuration
-and manage the target daemon.
+Using the iscsi::initiator definition from this module you can quickly attach
+to any iSCSI target on your network.  Once attached, that target will appear
+as a local block storage device.
+
+It is not necessary for both the initiator and target to be managed by this
+module, but that was the development model so other situations may require
+enhancing this module for the best possible support.
+
+This module will install the necessary packages, manage configuration files,
+and manage the various services related to initiators and/or targets.
 
 ## Setup
 
-### What iscsi affects
+### What iscsi Affects
+
+#### For iSCSI Initiators
+
+* Installation of the iscsi-initiator-utils package.
+* Management of iscsid.conf.
+* Management of the iscsid daemon.
+* Target discovery and login.
+
+#### For iSCSI Targets
 
 * Installation of the scsi-target-utils package.
 * Management of targets.conf.
@@ -63,11 +80,30 @@ configures the ACL to only allow an initiator with IP address 192.168.1.123 to
 connect.  Furthermore that initiator must provide the given user name and
 password for the CHAP initiator authentication.
 
+#### Provisioning an iSCSI Initiator ####
+
+This example could be applied on a host with IP address 192.168.1.123 to
+connect to the example target shown above, assuming it was at IP address
+192.168.1.234:
+
+    iscsi::initiator { '192.168.1.246':
+        user     => 'backupUser',
+        password => 'SecretSquirrelSauce',
+    }
+
+If you were to look at /proc/partitions before and after applying this, you
+should see that a new block device appears.  You could then use that new
+device like any other just as if was locally attached.
+
 ## Usage
 
 Any declaration of an iscsi::target automatically includes
-Class[iscsi::target::service] which is responsible for installing the package,
-managing the firewall and service.
+Class[iscsi::target::service] which is responsible for installing the
+appropriate package, managing the firewall and appropriate service.
+
+Simarly, any declaration of an iscsi::initiator automatically includes
+Class[iscsi::initiator::service] which is responsible for installing the
+appropriate package and service.
 
 ## Reference
 
@@ -78,7 +114,8 @@ mess with things. (We are working on automating this section!)
 
 ## Limitations
 
-Tested on Fedora 21, but likely to work on any Red Hat variant.
+Tested on Fedora 21, but likely to work on any Red Hat variant.  See
+manifest/params.pp for the most likely obstructions.
 
 ## Development
 
