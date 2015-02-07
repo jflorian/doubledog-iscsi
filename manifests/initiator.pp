@@ -34,9 +34,9 @@
 
 
 define iscsi::initiator (
-        $target,
         $user,
         $password,
+        $target=undef,
         $port=3260,
         $ensure='present',
     ) {
