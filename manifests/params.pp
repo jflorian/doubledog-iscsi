@@ -14,7 +14,8 @@
 class iscsi::params {
 
     case $::operatingsystem {
-        Fedora: {
+
+        'Fedora': {
 
             $initiator_packages = 'iscsi-initiator-utils'
             $initiator_services = 'iscsid'
