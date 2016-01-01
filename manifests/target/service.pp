@@ -16,7 +16,7 @@
 #
 # === Copyright
 #
-# Copyright 2015 John Florian
+# Copyright 2015-2016 John Florian
 
 
 class iscsi::target::service (
