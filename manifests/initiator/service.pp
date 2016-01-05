@@ -18,7 +18,6 @@
 
 class iscsi::initiator::service (
         $ensure='running',
-        $manage_firewall=true,
     ) inherits ::iscsi::params {
 
     package { $::iscsi::params::initiator_packages:
