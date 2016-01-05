@@ -14,9 +14,6 @@
 # [*backing*]
 #   The backing file or block device for the LUN instance.
 #
-# [*ipaddress*]
-#   Initiators must have this IP address to be able to connect.
-#
 # [*password*]
 #   The password the initiator must use for authentication to connect.
 #
@@ -27,6 +24,10 @@
 #
 # [*ensure*]
 #   Instance is to be 'present' (default) or 'absent'.
+#
+# [*ipaddress*]
+#   Allows connections only from the specified IP address.  Defaults to
+#   allowing connections from any IP address.
 #
 # [*iqn*]
 #   The iSCSI Qualified Name.  See RFC 3720/3721 for more details.  Briefly,
@@ -52,10 +53,10 @@
 
 define iscsi::target (
         $backing,
-        $ipaddress,
         $password,
         $user,
         $ensure='present',
+        $ipaddress=undef,
         $iqn=$title,
     ) {
 
