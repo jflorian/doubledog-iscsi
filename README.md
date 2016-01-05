@@ -114,8 +114,11 @@ mess with things. (We are working on automating this section!)
 
 ## Limitations
 
-Tested on Fedora 21, but likely to work on any Red Hat variant.  See
+Tested on Fedora 23, but likely to work on any Red Hat variant.  See
 manifest/params.pp for the most likely obstructions.
+
+This should be compatible with Puppet 3.x and is being used with Puppet 4.x as
+well.
 
 ## Development
 
