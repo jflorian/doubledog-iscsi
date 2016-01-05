@@ -4,6 +4,10 @@
 #
 # === Parameters
 #
+# ==== Required
+#
+# ==== Optional
+#
 # [*ensure*]
 #   Instance is to be 'running' (default) or 'stopped'.
 #

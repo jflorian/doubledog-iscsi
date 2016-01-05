@@ -4,10 +4,26 @@
 #
 # === Parameters
 #
+# ==== Required
+#
 # [*namevar*]
 #   An arbitrary identifier for the target instance unless the "iqn" parameter
 #   is not set in which case this must provide the value normally set with the
 #   "iqn" parameter.
+#
+# [*backing*]
+#   The backing file or block device for the LUN instance.
+#
+# [*ipaddress*]
+#   Initiators must have this IP address to be able to connect.
+#
+# [*password*]
+#   The password the initiator must use for authentication to connect.
+#
+# [*user*]
+#   The user name the initiator must use for authentication to connect.
+#
+# ==== Optional
 #
 # [*ensure*]
 #   Instance is to be 'present' (default) or 'absent'.
@@ -25,18 +41,6 @@
 #   This may be used in place of "namevar" if it's beneficial to give namevar
 #   an arbitrary value.
 #
-# [*backing*]
-#   The backing file or block device for the LUN instance.
-#
-# [*ipaddress*]
-#   Initiators must have this IP address to be able to connect.
-#
-# [*user*]
-#   The user name the initiator must use for authentication to connect.
-#
-# [*password*]
-#   The password the initiator must use for authentication to connect.
-#
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
@@ -49,10 +53,10 @@
 define iscsi::target (
         $backing,
         $ipaddress,
-        $user,
         $password,
-        $iqn=$title,
+        $user,
         $ensure='present',
+        $iqn=$title,
     ) {
 
     include '::iscsi::target::service'
