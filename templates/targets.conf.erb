@@ -5,7 +5,7 @@
 
 default-driver iscsi
 
-<target <%= @_iqn %>>
+<target <%= @iqn %>>
     backing-store <%= @backing %>
     incominguser <%= @user %> <%= @password %>
     initiator-address <%= @ipaddress %>

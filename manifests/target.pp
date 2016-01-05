@@ -22,6 +22,9 @@
 #       - optional ":" prefixing a storage target name specified by the naming
 #       authority.
 #
+#   This may be used in place of "namevar" if it's beneficial to give namevar
+#   an arbitrary value.
+#
 # [*backing*]
 #   The backing file or block device for the LUN instance.
 #
@@ -48,17 +51,11 @@ define iscsi::target (
         $ipaddress,
         $user,
         $password,
-        $iqn=undef,
+        $iqn=$title,
         $ensure='present',
     ) {
 
     include '::iscsi::target::service'
-
-    if $iqn {
-        $_iqn = $iqn
-    } else {
-        $_iqn = $name
-    }
 
     file { '/etc/tgt/targets.conf':
         ensure    => $ensure,

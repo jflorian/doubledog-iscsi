@@ -15,6 +15,9 @@
 # [*target*]
 #   Hostname or IP address of the target that is to be connected.
 #
+#   This may be used in place of "namevar" if it's beneficial to give namevar
+#   an arbitrary value.
+#
 # [*port*]
 #   The TCP port on the target to which is to be connected.  Defaults to 3260.
 #
@@ -36,18 +39,12 @@
 define iscsi::initiator (
         $user,
         $password,
-        $target=undef,
+        $target=$title,
         $port=3260,
         $ensure='present',
     ) {
 
     include '::iscsi::initiator::service'
-
-    if $target {
-        $_target = $target
-    } else {
-        $_target = $name
-    }
 
     file { '/etc/iscsi/iscsid.conf':
         ensure    => $ensure,
@@ -63,9 +60,9 @@ define iscsi::initiator (
         content   => template('iscsi/iscsid.conf.erb'),
     }
 
-    exec { "discover iSCSI targets at '${_target}:${port}'":
-        command => "iscsiadm -m discovery -t sendtargets -p ${_target}:${port}",
-        unless  => "test -d /var/lib/iscsi/send_targets/${_target},${port}",
+    exec { "discover iSCSI targets at '${target}:${port}'":
+        command => "iscsiadm -m discovery -t sendtargets -p ${target}:${port}",
+        unless  => "test -d /var/lib/iscsi/sendtargets/${target},${port}",
         require => Class['::iscsi::initiator::service'],
     }
 
