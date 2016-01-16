@@ -27,6 +27,9 @@ iscsid.startup = /bin/systemctl start iscsid.socket iscsiuio.socket
 # Default for upstream open-iscsi scripts (uncomment to activate).
 # iscsid.startup = /sbin/iscsid
 
+# Check for active mounts on devices reachable through a session
+# and refuse to logout if there are any.  Defaults to "No".
+# iscsid.safe_logout = Yes
 
 #############################
 # NIC/HBA and driver settings
@@ -85,7 +88,7 @@ node.session.auth.password = <%= @password %>
 # Timeouts
 # ********
 #
-# See the iSCSI REAME's Advanced Configuration section for tips
+# See the iSCSI README's Advanced Configuration section for tips
 # on setting timeouts when using multipath or doing root over iSCSI.
 #
 # To specify the length of time to wait for session re-establishment
