@@ -62,6 +62,7 @@ define iscsi::initiator (
         notify    => Service[$::iscsi::params::initiator_services],
         subscribe => Package[$::iscsi::params::initiator_packages],
         content   => template('iscsi/iscsid.conf.erb'),
+        show_diff => false,
     }
 
     exec { "discover iSCSI targets at '${target}:${port}'":

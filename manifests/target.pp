@@ -74,6 +74,7 @@ define iscsi::target (
         notify    => Service[$::iscsi::params::target_services],
         subscribe => Package[$::iscsi::params::target_packages],
         content   => template('iscsi/targets.conf.erb'),
+        show_diff => false,
     }
 
 }
