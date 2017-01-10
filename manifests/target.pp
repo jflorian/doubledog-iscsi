@@ -62,6 +62,8 @@ define iscsi::target (
         String[1] $iqn=$title,
     ) {
 
+    validate_absolute_path($backing)
+
     include '::iscsi::target::service'
 
     file { '/etc/tgt/targets.conf':
