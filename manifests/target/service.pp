@@ -9,7 +9,9 @@
 # ==== Optional
 #
 # [*ensure*]
-#   Instance is to be 'running' (default) or 'stopped'.
+#   Instance is to be 'running' (default) or 'stopped'.  Alternatively,
+#   a Boolean value may also be used with true equivalent to 'running' and
+#   false equivalent to 'stopped'.
 #
 # [*manage_firewall*]
 #   Whether to manage the firewall or not.  Defaults to true.
@@ -24,8 +26,8 @@
 
 
 class iscsi::target::service (
-        $ensure='running',
-        $manage_firewall=true,
+        Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
+        Boolean $manage_firewall=true,
     ) inherits ::iscsi::params {
 
     package { $::iscsi::params::target_packages:

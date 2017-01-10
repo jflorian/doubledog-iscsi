@@ -20,7 +20,9 @@
 # ==== Optional
 #
 # [*ensure*]
-#   Instance is to be 'present' (default) or 'absent'.
+#   Instance is to be 'present' (default) or 'absent'.  Alternatively,
+#   a Boolean value may also be used with true equivalent to 'present' and
+#   false equivalent to 'absent'.
 #
 # [*port*]
 #   The TCP port on the target to which is to be connected.  Defaults to 3260.
@@ -41,11 +43,11 @@
 
 
 define iscsi::initiator (
-        $password,
-        $user,
-        $ensure='present',
-        $port=3260,
-        $target=$title,
+        String[1] $password,
+        String[1] $user,
+        Variant[Boolean, Enum['present', 'absent']] $ensure='present',
+        Integer[0, 65535] $port=3260,
+        String[1] $target=$title,
     ) {
 
     include '::iscsi::initiator::service'

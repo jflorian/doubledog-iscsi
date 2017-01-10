@@ -9,7 +9,9 @@
 # ==== Optional
 #
 # [*ensure*]
-#   Instance is to be 'running' (default) or 'stopped'.
+#   Instance is to be 'running' (default) or 'stopped'.  Alternatively,
+#   a Boolean value may also be used with true equivalent to 'running' and
+#   false equivalent to 'stopped'.
 #
 # === Authors
 #
@@ -21,7 +23,7 @@
 
 
 class iscsi::initiator::service (
-        $ensure='running',
+        Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
     ) inherits ::iscsi::params {
 
     package { $::iscsi::params::initiator_packages:

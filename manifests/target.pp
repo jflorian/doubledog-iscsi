@@ -23,7 +23,9 @@
 # ==== Optional
 #
 # [*ensure*]
-#   Instance is to be 'present' (default) or 'absent'.
+#   Instance is to be 'present' (default) or 'absent'.  Alternatively,
+#   a Boolean value may also be used with true equivalent to 'present' and
+#   false equivalent to 'absent'.
 #
 # [*ipaddress*]
 #   Allows connections only from the specified IP address.  Defaults to
@@ -52,12 +54,12 @@
 
 
 define iscsi::target (
-        $backing,
-        $password,
-        $user,
-        $ensure='present',
-        $ipaddress=undef,
-        $iqn=$title,
+        String[1] $backing,
+        String[1] $password,
+        String[1] $user,
+        Variant[Boolean, Enum['present', 'absent']] $ensure='present',
+        Optional[String[1]] $ipaddress=undef,
+        String[1] $iqn=$title,
     ) {
 
     include '::iscsi::target::service'
