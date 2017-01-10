@@ -17,7 +17,8 @@
 
 Presently this module allows you to manage iSCSI targets using
 scsi-target-utils and iSCSI initiators using iscsi-initiator-utils.  It has
-been developed against Fedora 21 using Puppet-3.6.
+been developed against Fedora 21 using Puppet-3.6.  It's been used on Fedora
+21 and 23 and also on CentOS 7.
 
 ## Module Description
 
@@ -114,8 +115,8 @@ mess with things. (We are working on automating this section!)
 
 ## Limitations
 
-Tested on Fedora 23, but likely to work on any Red Hat variant.  See
-manifest/params.pp for the most likely obstructions.
+Tested on Fedora 23 and CentOS 7, but likely to work on any Red Hat variant.
+See manifest/params.pp for the most likely obstructions.
 
 This should be compatible with Puppet 3.x and is being used with Puppet 4.x as
 well.
