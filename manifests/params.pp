@@ -8,7 +8,7 @@
 #
 # === Copyright
 #
-# Copyright 2015-2016 John Florian
+# Copyright 2015-2017 John Florian
 
 
 class iscsi::params {
