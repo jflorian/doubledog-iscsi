@@ -66,7 +66,7 @@ define iscsi::target (
 
     include '::iscsi::target::service'
 
-    file { '/etc/tgt/targets.conf':
+    file { "/etc/tgt/conf.d/${iqn}.conf":
         ensure    => $ensure,
         owner     => 'root',
         group     => 'root',
@@ -77,7 +77,7 @@ define iscsi::target (
         before    => Service[$::iscsi::params::target_services],
         notify    => Service[$::iscsi::params::target_services],
         subscribe => Package[$::iscsi::params::target_packages],
-        content   => template('iscsi/targets.conf.erb'),
+        content   => template('iscsi/target.conf.erb'),
         show_diff => false,
     }
 

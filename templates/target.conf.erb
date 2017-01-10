@@ -1,9 +1,7 @@
 # WARNING:
-#   This file is managed by puppet via the "<%= @module_name %>" module.
+#   This file is managed by Puppet via the "<%= @module_name %>" module.
 #
-# Origin: templates/targets.conf.erb
-
-default-driver iscsi
+# templates/target.conf.erb
 
 <target <%= @iqn %>>
     backing-store <%= @backing %>
