@@ -8,6 +8,9 @@
 #
 # ==== Optional
 #
+# [*enable*]
+#   Instance is to be started at boot.  Either true (default) or false.
+#
 # [*ensure*]
 #   Instance is to be 'running' (default) or 'stopped'.  Alternatively,
 #   a Boolean value may also be used with true equivalent to 'running' and
@@ -23,6 +26,7 @@
 
 
 class iscsi::initiator::service (
+        Boolean $enable=true,
         Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
     ) inherits ::iscsi::params {
 
@@ -33,7 +37,7 @@ class iscsi::initiator::service (
 
     service { $::iscsi::params::initiator_services:
         ensure     => $ensure,
-        enable     => true,
+        enable     => $enable,
         hasrestart => true,
         hasstatus  => true,
     }

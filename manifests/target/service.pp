@@ -8,6 +8,9 @@
 #
 # ==== Optional
 #
+# [*enable*]
+#   Instance is to be started at boot.  Either true (default) or false.
+#
 # [*ensure*]
 #   Instance is to be 'running' (default) or 'stopped'.  Alternatively,
 #   a Boolean value may also be used with true equivalent to 'running' and
@@ -26,6 +29,7 @@
 
 
 class iscsi::target::service (
+        Boolean $enable=true,
         Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
         Boolean $manage_firewall=true,
     ) inherits ::iscsi::params {
@@ -46,7 +50,7 @@ class iscsi::target::service (
 
     service { $::iscsi::params::target_services:
         ensure     => $ensure,
-        enable     => true,
+        enable     => $enable,
         hasrestart => true,
         hasstatus  => true,
     }
