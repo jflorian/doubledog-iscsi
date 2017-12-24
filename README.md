@@ -29,9 +29,9 @@ it a file or some block-device that you want to make available over a network.
 Any iSCSI initiator would connect to this target and at that end you have what
 appears to be a regular SCSI storage device.
 
-Using the `iscsi::initiator` definition from this module you can quickly attach
-to any iSCSI target on your network.  Once attached, that target will appear as
-a local block storage device.
+Using the [iscsi::initiator](#iscsiinitiator-defined-type) definition from this
+module you can quickly attach to any iSCSI target on your network.  Once
+attached, that target will appear as a local block storage device.
 
 It is not necessary for both the initiator and target to be managed by this
 module, but that was the development model so other situations may require
@@ -104,7 +104,8 @@ Any declaration of an `iscsi::target` automatically includes the
 responsible for installing the appropriate package(s), managing the firewall
 and appropriate service(s) respectively.
 
-Similarly, any declaration of an `iscsi::initiator` automatically includes
+Similarly, any declaration of an
+[iscsi::initiator](#iscsiinitiator-defined-type) automatically includes
 `iscsi::initiator::package` and `iscsi::initiator::service` which are
 responsible for installing/managing their appropriate package(s) and
 service(s).
@@ -115,11 +116,43 @@ service(s).
 
 **Defined types:**
 
+* [iscsi::initiator](#iscsiinitiator-defined-type)
+
 
 ### Classes
 
 
 ### Defined types
+
+#### iscsi::initiator defined type
+
+This defined type manages an iSCSI initiator using the "send targets" discovery
+method.
+
+##### `namevar`
+An arbitrary identifier for the initiator instance unless the `target`
+parameter is not set in which case this must provide the value normally set
+with the `target` parameter.
+
+##### `ensure`
+Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean
+value may also be used with `true` equivalent to `present` and `false`
+equivalent to `absent`.
+
+##### `password`
+The password the target requires for connection authentication.
+
+##### `port`
+The TCP port on the target to which is to be connected.  Defaults to 3260.
+
+##### `target`
+Hostname or IP address of the target that is to be connected.
+
+This may be used in place of `namevar` if it's beneficial to give namevar an
+arbitrary value.
+
+##### `user`
+The user name the target requires for connection authentication.
 
 
 ## Limitations
