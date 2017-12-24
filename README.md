@@ -101,9 +101,10 @@ device like any other just as if was locally attached.
 ## Usage
 
 Any declaration of an [iscsi::target](#iscsitarget-defined-type) automatically
-includes the `iscsi::target::package` and `iscsi::target::service` classes
-which are responsible for installing the appropriate package(s), managing the
-firewall and appropriate service(s) respectively.
+includes the [iscsi::target::package](#iscsitargetpackage-class) and
+`iscsi::target::service` classes which are responsible for installing the
+appropriate package(s), managing the firewall and appropriate service(s)
+respectively.
 
 Similarly, any declaration of an
 [iscsi::initiator](#iscsiinitiator-defined-type) automatically includes
@@ -117,6 +118,7 @@ for installing/managing their appropriate package(s) and service(s).
 
 * [iscsi::initiator::package](#iscsiinitiatorpackage-class)
 * [iscsi::initiator::service](#iscsiinitiatorservice-class)
+* [iscsi::target::package](#iscsitargetpackage-class)
 
 **Defined types:**
 
@@ -154,6 +156,19 @@ equivalent to `stopped`.
 ##### `names`
 An array of service names needed for the initiator.  The default should be
 correct for supported platforms.
+
+
+#### iscsi::target::package class
+
+This class manages the iSCSI target package(s) on a host.
+
+##### `ensure`
+The desired package state.  This can be `installed` (default), `absent`, or any
+other value appropriate to the Package resource type.
+
+##### `names`
+An array of package names needed for the target installation.  The default
+should be correct for supported platforms.
 
 
 ### Defined types

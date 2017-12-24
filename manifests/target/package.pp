@@ -2,20 +2,6 @@
 #
 # Manages the iSCSI target package on a host.
 #
-# === Parameters
-#
-# ==== Required
-#
-# ==== Optional
-#
-# [*ensure*]
-#   The desired package state.  This can be `installed` (default), `absent`,
-#   or any other value appropriate to the Package resource type.
-#
-# [*names*]
-#   An array of package names needed for the target installation.  The default
-#   should be correct for supported platforms.
-#
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
