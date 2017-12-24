@@ -98,9 +98,10 @@ device like any other just as if was locally attached.
 
 ## Usage
 
-Any declaration of an iscsi::target automatically includes
-Class[iscsi::target::service] which is responsible for installing the
-appropriate package, managing the firewall and appropriate service.
+Any declaration of an `iscsi::target` automatically includes the
+`iscsi::target::package` and `iscsi::target::service` classes which are
+responsible for installing the appropriate package(s), managing the firewall
+and appropriate service(s) respectively.
 
 Similarly, any declaration of an `iscsi::initiator` automatically includes
 `iscsi::initiator::package` and `iscsi::initiator::service` which are

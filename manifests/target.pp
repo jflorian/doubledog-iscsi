@@ -64,6 +64,7 @@ define iscsi::target (
 
     validate_absolute_path($backing)
 
+    include '::iscsi::target::package'
     include '::iscsi::target::service'
 
     file { "/etc/tgt/conf.d/${iqn}.conf":
@@ -74,9 +75,9 @@ define iscsi::target (
         seluser   => 'system_u',
         selrole   => 'object_r',
         seltype   => 'etc_t',
-        before    => Service[$::iscsi::params::target_services],
-        notify    => Service[$::iscsi::params::target_services],
-        subscribe => Package[$::iscsi::params::target_packages],
+        before    => Class['::iscsi::target::service'],
+        notify    => Class['::iscsi::target::service'],
+        subscribe => Class['::iscsi::target::package'],
         content   => template('iscsi/target.conf.erb'),
         show_diff => false,
     }

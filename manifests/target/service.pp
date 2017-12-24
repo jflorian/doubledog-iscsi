@@ -34,24 +34,7 @@ class iscsi::target::service (
         Boolean $manage_firewall=true,
     ) inherits ::iscsi::params {
 
-    package { $::iscsi::params::target_packages:
-        ensure => installed,
-        notify => Service[$::iscsi::params::target_services],
-    }
-
-    file { '/etc/tgt/targets.conf':
-        owner     => 'root',
-        group     => 'root',
-        mode      => '0640',
-        seluser   => 'system_u',
-        selrole   => 'object_r',
-        seltype   => 'etc_t',
-        before    => Service[$::iscsi::params::target_services],
-        notify    => Service[$::iscsi::params::target_services],
-        subscribe => Package[$::iscsi::params::target_packages],
-        content   => template('iscsi/target-defaults.conf.erb'),
-        show_diff => false,
-    }
+    include '::iscsi::target::package'
 
     if $manage_firewall {
         firewall { '500 accept iSCSI target packets':
