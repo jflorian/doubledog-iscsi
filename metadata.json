@@ -7,6 +7,13 @@
     "source": "https://github.com/jflorian/doubledog-iscsi",
     "project_page": "https://github.com/jflorian/doubledog-iscsi",
     "issues_url": "https://github.com/jflorian/doubledog-iscsi/issues",
+    "operatingsystem_support": [{
+        "operatingsystem": "CentOS",
+        "operatingsystemrelease": "7.0"
+    }, {
+        "operatingsystem": "Fedora",
+        "operatingsystemrelease": ["25", "26", "27"]
+    }],
     "dependencies": [{
         "name": "puppetlabs-stdlib",
         "version_range": ">= 1.0.0"
