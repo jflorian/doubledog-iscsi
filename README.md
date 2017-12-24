@@ -21,8 +21,6 @@ scsi-target-utils and iSCSI initiators using iscsi-initiator-utils.  It was
 first developed against Fedora 21 using Puppet-3.6.  It's since been used on Fedora
 23 through Fedora 27 and also on CentOS 7.
 
-## Module Description
-
 Using the [iscsi::target](#iscsitarget-defined-type) definition from this
 module you can quickly provision an iSCSI target on your network.  This is
 useful if you have some storage, be it a file or some block-device that you
