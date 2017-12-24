@@ -50,6 +50,7 @@ define iscsi::initiator (
         String[1] $target=$title,
     ) {
 
+    include '::iscsi::initiator::package'
     include '::iscsi::initiator::service'
 
     file { '/etc/iscsi/iscsid.conf':
@@ -60,9 +61,9 @@ define iscsi::initiator (
         seluser   => 'system_u',
         selrole   => 'object_r',
         seltype   => 'etc_t',
-        before    => Service[$::iscsi::params::initiator_services],
-        notify    => Service[$::iscsi::params::initiator_services],
-        subscribe => Package[$::iscsi::params::initiator_packages],
+        before    => Class['::iscsi::initiator::service'],
+        notify    => Class['::iscsi::initiator::service'],
+        subscribe => Class['::iscsi::initiator::package'],
         content   => template('iscsi/iscsid.conf.erb'),
         show_diff => false,
     }
@@ -70,8 +71,8 @@ define iscsi::initiator (
     exec { "discover iSCSI targets at '${target}:${port}'":
         command => "iscsiadm -m discovery -t sendtargets -p ${target}:${port} -l",
         unless  => "iscsiadm -m node -p '${target}:${port}'",
-        require => Package[$::iscsi::params::initiator_packages],
-        notify  => Service[$::iscsi::params::initiator_services],
+        require => Class['::iscsi::initiator::package'],
+        notify  => Class['::iscsi::initiator::service'],
     }
 
 }

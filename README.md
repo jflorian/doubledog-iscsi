@@ -102,9 +102,10 @@ Any declaration of an iscsi::target automatically includes
 Class[iscsi::target::service] which is responsible for installing the
 appropriate package, managing the firewall and appropriate service.
 
-Simarly, any declaration of an iscsi::initiator automatically includes
-Class[iscsi::initiator::service] which is responsible for installing the
-appropriate package and service.
+Similarly, any declaration of an `iscsi::initiator` automatically includes
+`iscsi::initiator::package` and `iscsi::initiator::service` which are
+responsible for installing/managing their appropriate package(s) and
+service(s).
 
 ## Reference
 

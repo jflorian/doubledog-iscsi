@@ -30,10 +30,7 @@ class iscsi::initiator::service (
         Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
     ) inherits ::iscsi::params {
 
-    package { $::iscsi::params::initiator_packages:
-        ensure => installed,
-        notify => Service[$::iscsi::params::initiator_services],
-    }
+    include '::iscsi::initiator::package'
 
     service { $::iscsi::params::initiator_services:
         ensure     => $ensure,
