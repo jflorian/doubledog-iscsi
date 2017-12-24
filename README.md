@@ -106,13 +106,15 @@ and appropriate service(s) respectively.
 
 Similarly, any declaration of an
 [iscsi::initiator](#iscsiinitiator-defined-type) automatically includes
-`iscsi::initiator::package` and `iscsi::initiator::service` which are
-responsible for installing/managing their appropriate package(s) and
-service(s).
+[iscsi::initiator::package](#iscsiinitiatorpackage-class) and
+`iscsi::initiator::service` which are responsible for installing/managing their
+appropriate package(s) and service(s).
 
 ## Reference
 
 **Classes:**
+
+* [iscsi::initiator::package](#iscsiinitiatorpackage-class)
 
 **Defined types:**
 
@@ -120,6 +122,18 @@ service(s).
 
 
 ### Classes
+
+#### iscsi::initiator::package class
+
+This class manages the iSCSI initiator package(s) on a host.
+
+##### `ensure`
+The desired package state.  This can be `installed` (default), `absent`, or any
+other value appropriate to the Package resource type.
+
+##### `names`
+An array of package names needed for the initiator installation.  The default
+should be correct for supported platforms.
 
 
 ### Defined types
