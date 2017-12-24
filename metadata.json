@@ -1,7 +1,7 @@
 {
   "name": "doubledog-iscsi",
   "version": "0.1.1",
-  "author": "jflorian",
+  "author": "John Florian",
   "summary": "This Puppet module provides management of iSCSI initiators and targets.",
   "license": "GPL-3.0",
   "source": "https://github.com/jflorian/doubledog-iscsi",
