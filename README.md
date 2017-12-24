@@ -107,14 +107,15 @@ and appropriate service(s) respectively.
 Similarly, any declaration of an
 [iscsi::initiator](#iscsiinitiator-defined-type) automatically includes
 [iscsi::initiator::package](#iscsiinitiatorpackage-class) and
-`iscsi::initiator::service` which are responsible for installing/managing their
-appropriate package(s) and service(s).
+[iscsi::initiator::service](#iscsiinitiatorservice-class) which are responsible
+for installing/managing their appropriate package(s) and service(s).
 
 ## Reference
 
 **Classes:**
 
 * [iscsi::initiator::package](#iscsiinitiatorpackage-class)
+* [iscsi::initiator::service](#iscsiinitiatorservice-class)
 
 **Defined types:**
 
@@ -134,6 +135,23 @@ other value appropriate to the Package resource type.
 ##### `names`
 An array of package names needed for the initiator installation.  The default
 should be correct for supported platforms.
+
+
+#### iscsi::initiator::service class
+
+This class manages the iSCSI initiator service(s) on a host.
+
+##### `enable`
+Instance is to be started at boot.  Either `true` (default) or `false`.
+
+##### `ensure`
+Instance is to be `running` (default) or `stopped`.  Alternatively, a Boolean
+value may also be used with `true` equivalent to `running` and `false`
+equivalent to `stopped`.
+
+##### `names`
+An array of service names needed for the initiator.  The default should be
+correct for supported platforms.
 
 
 ### Defined types
