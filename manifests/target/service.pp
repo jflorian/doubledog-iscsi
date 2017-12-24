@@ -19,6 +19,10 @@
 # [*manage_firewall*]
 #   Whether to manage the firewall or not.  Defaults to true.
 #
+# [*names*]
+#   An array of service names needed for the target.  The default should be
+#   correct for supported platforms.
+#
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
@@ -29,10 +33,11 @@
 
 
 class iscsi::target::service (
-        Boolean $enable=true,
-        Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
-        Boolean $manage_firewall=true,
-    ) inherits ::iscsi::params {
+        Boolean                                         $enable,
+        Variant[Boolean, Enum['running', 'stopped']]    $ensure,
+        Boolean                                         $manage_firewall,
+        Array[String[1], 1]                             $names,
+    ) {
 
     include '::iscsi::target::package'
 
@@ -45,7 +50,7 @@ class iscsi::target::service (
         }
     }
 
-    service { $::iscsi::params::target_services:
+    service { $names:
         ensure     => $ensure,
         enable     => $enable,
         hasrestart => true,

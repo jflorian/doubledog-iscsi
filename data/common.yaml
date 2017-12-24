@@ -1,0 +1,16 @@
+---
+iscsi::initiator::package::ensure:          installed
+iscsi::initiator::package::names:
+    - iscsi-initiator-utils
+iscsi::initiator::service::enable:          true
+iscsi::initiator::service::ensure:          running
+iscsi::initiator::service::names:
+    - iscsid
+iscsi::target::package::ensure:             installed
+iscsi::target::package::names:
+    - scsi-target-utils
+iscsi::target::service::enable:             true
+iscsi::target::service::ensure:             running
+iscsi::target::service::manage_firewall:    true
+iscsi::target::service::names:
+    - tgtd

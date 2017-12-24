@@ -16,6 +16,10 @@
 #   a Boolean value may also be used with true equivalent to 'running' and
 #   false equivalent to 'stopped'.
 #
+# [*names*]
+#   An array of service names needed for the initiator.  The default should be
+#   correct for supported platforms.
+#
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
@@ -26,13 +30,14 @@
 
 
 class iscsi::initiator::service (
-        Boolean $enable=true,
-        Variant[Boolean, Enum['running', 'stopped']] $ensure='running',
-    ) inherits ::iscsi::params {
+        Boolean                                         $enable,
+        Variant[Boolean, Enum['running', 'stopped']]    $ensure,
+        Array[String[1], 1]                             $names,
+    ) {
 
     include '::iscsi::initiator::package'
 
-    service { $::iscsi::params::initiator_services:
+    service { $names:
         ensure     => $ensure,
         enable     => $enable,
         hasrestart => true,

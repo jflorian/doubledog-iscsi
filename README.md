@@ -117,8 +117,8 @@ mess with things. (We are working on automating this section!)
 
 ## Limitations
 
-Tested on Fedora 23 and CentOS 7, but likely to work on any Red Hat variant.
-See manifest/params.pp for the most likely obstructions.
+Tested on Fedora 27 and CentOS 7, but likely to work on any Red Hat variant.
+See `data/common.yaml` for the most likely obstructions.  If "one size can't fit all", the value should be moved from `data/common.yaml` to `data/os/%{facts.os.name}.yaml` instead.  See `hiera.yaml` for how this is handled.
 
 This should be compatible with Puppet 3.x and is being used with Puppet 4.x as
 well.
