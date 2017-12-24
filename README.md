@@ -102,9 +102,9 @@ device like any other just as if was locally attached.
 
 Any declaration of an [iscsi::target](#iscsitarget-defined-type) automatically
 includes the [iscsi::target::package](#iscsitargetpackage-class) and
-`iscsi::target::service` classes which are responsible for installing the
-appropriate package(s), managing the firewall and appropriate service(s)
-respectively.
+[iscsi::target::service](#iscsitargetservice-class) classes which are
+responsible for installing the appropriate package(s), managing the firewall
+and appropriate service(s) respectively.
 
 Similarly, any declaration of an
 [iscsi::initiator](#iscsiinitiator-defined-type) automatically includes
@@ -119,6 +119,7 @@ for installing/managing their appropriate package(s) and service(s).
 * [iscsi::initiator::package](#iscsiinitiatorpackage-class)
 * [iscsi::initiator::service](#iscsiinitiatorservice-class)
 * [iscsi::target::package](#iscsitargetpackage-class)
+* [iscsi::target::service](#iscsitargetservice-class)
 
 **Defined types:**
 
@@ -169,6 +170,27 @@ other value appropriate to the Package resource type.
 ##### `names`
 An array of package names needed for the target installation.  The default
 should be correct for supported platforms.
+
+
+#### iscsi::target::service class
+
+This class manages the iSCSI target service(s) on a host.
+
+##### `enable`
+Instance is to be started at boot.  Either `true` (default) or `false`.
+
+##### `ensure`
+Instance is to be `running` (default) or `stopped`.  Alternatively, a Boolean
+value may also be used with `true` equivalent to `running` and `false`
+equivalent to `stopped`.
+
+##### `manage_firewall`
+A Boolean value indicating whether to manage the firewall or not.  Defaults to
+`true`.
+
+##### `names`
+An array of service names needed for the target.  The default should be
+correct for supported platforms.
 
 
 ### Defined types
