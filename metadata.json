@@ -1,6 +1,6 @@
 {
     "name": "doubledog-iscsi",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "John Florian",
     "summary": "This Puppet module provides management of iSCSI initiators and targets.",
     "license": "GPL-3.0",
@@ -9,7 +9,7 @@
     "issues_url": "https://github.com/jflorian/doubledog-iscsi/issues",
     "operatingsystem_support": [{
         "operatingsystem": "CentOS",
-        "operatingsystemrelease": "7.0"
+        "operatingsystemmajrelease": "7"
     }, {
         "operatingsystem": "Fedora",
         "operatingsystemrelease": ["25", "26", "27"]
