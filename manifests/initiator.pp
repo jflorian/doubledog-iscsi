@@ -22,19 +22,21 @@ define iscsi::initiator (
     include '::iscsi::initiator::package'
     include '::iscsi::initiator::service'
 
-    file { '/etc/iscsi/iscsid.conf':
-        ensure    => $ensure,
-        owner     => 'root',
-        group     => 'root',
-        mode      => '0600',
-        seluser   => 'system_u',
-        selrole   => 'object_r',
-        seltype   => 'etc_t',
-        before    => Class['::iscsi::initiator::service'],
-        notify    => Class['::iscsi::initiator::service'],
-        subscribe => Class['::iscsi::initiator::package'],
-        content   => template('iscsi/iscsid.conf.erb'),
-        show_diff => false,
+    if !defined(File['/etc/iscsi/iscsid.conf']) {
+        file { '/etc/iscsi/iscsid.conf':
+            ensure    => $ensure,
+            owner     => 'root',
+            group     => 'root',
+            mode      => '0600',
+            seluser   => 'system_u',
+            selrole   => 'object_r',
+            seltype   => 'etc_t',
+            before    => Class['::iscsi::initiator::service'],
+            notify    => Class['::iscsi::initiator::service'],
+            subscribe => Class['::iscsi::initiator::package'],
+            content   => template('iscsi/iscsid.conf.erb'),
+            show_diff => false,
+        }
     }
 
     exec { "discover iSCSI targets at '${target}:${port}'":
