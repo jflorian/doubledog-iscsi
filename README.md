@@ -92,6 +92,15 @@ connect to the example target shown above, assuming it was at IP address
         password => 'SecretSquirrelSauce',
     }
 
+To define a target with CHAP disabled the resource may be defined as follows.
+
+    iscsi::initiator { 'production-data'
+            enable_chap => false,
+            user        => undef,
+            password    => undef,
+            target      => '192.168.111.4',
+    }
+
 If you were to look at /proc/partitions before and after applying this, you
 should see that a new block device appears.  You could then use that new
 device like any other just as if was locally attached.
@@ -203,13 +212,20 @@ An arbitrary identifier for the initiator instance unless the `target`
 parameter is not set in which case this must provide the value normally set
 with the `target` parameter.
 
+##### `enable_chap`
+This value determines whether CHAP is enabled for initiator authentication.
+The default value is true.  To disable CHAP authentication this value may
+be set to false.
+
 ##### `ensure`
 Instance is to be `present` (default) or `absent`.  Alternatively, a Boolean
 value may also be used with `true` equivalent to `present` and `false`
 equivalent to `absent`.
 
 ##### `password`
-The password the target requires for connection authentication.
+The password the target requires for connection authentication.  Nodes
+that do not require authentication must set this parameter to undefined or
+null via hiera.
 
 ##### `port`
 The TCP port on the target to which is to be connected.  Defaults to 3260.
@@ -221,7 +237,9 @@ This may be used in place of `namevar` if it's beneficial to give namevar an
 arbitrary value.
 
 ##### `user`
-The user name the target requires for connection authentication.
+The user name the target requires for connection authentication.  Nodes
+that do not require authentication must set this parameter to undefined or
+null via hiera.
 
 
 #### iscsi::target defined type

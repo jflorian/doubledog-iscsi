@@ -56,6 +56,7 @@ node.leading_login = No
 # CHAP Settings
 # *************
 
+<% if @enable_chap -%>
 # To enable CHAP authentication set node.session.auth.authmethod
 # to CHAP. The default is None.
 node.session.auth.authmethod = CHAP
@@ -64,6 +65,9 @@ node.session.auth.authmethod = CHAP
 # authentication by the target(s), uncomment the following lines:
 node.session.auth.username = <%= @user %>
 node.session.auth.password = <%= @password %>
+<% else -%>
+node.session.auth.authmethod = None
+<% end -%>
 
 # To set a CHAP username and password for target(s)
 # authentication by the initiator, uncomment the following lines:
