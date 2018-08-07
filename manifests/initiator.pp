@@ -12,8 +12,9 @@
 
 
 define iscsi::initiator (
-        String[1] $password,
-        String[1] $user,
+        Boolean $enable_chap = true,
+        Optional[String[1]] $password,
+        Optional[String[1]] $user,
         Variant[Boolean, Enum['present', 'absent']] $ensure='present',
         Integer[0, 65535] $port=3260,
         String[1] $target=$title,
