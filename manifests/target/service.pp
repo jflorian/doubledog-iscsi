@@ -8,14 +8,16 @@
 #
 # === Copyright
 #
-# Copyright 2015-2017 John Florian
+# This file is part of the doubledog-iscsi Puppet module.
+# Copyright 2015-2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 class iscsi::target::service (
-        Boolean                                         $enable,
-        Variant[Boolean, Enum['running', 'stopped']]    $ensure,
-        Boolean                                         $manage_firewall,
-        Array[String[1], 1]                             $names,
+        Boolean                 $enable,
+        Ddolib::Service::Ensure $ensure,
+        Boolean                 $manage_firewall,
+        Array[String[1], 1]     $names,
     ) {
 
     include '::iscsi::target::package'
