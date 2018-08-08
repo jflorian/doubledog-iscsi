@@ -43,6 +43,7 @@ define iscsi::initiator (
     }
 
     exec { "discover iSCSI targets at '${target}:${port}'":
+        path    => '/usr/sbin',
         command => "iscsiadm -m discovery -t sendtargets -p ${target}:${port} -l",
         unless  => "iscsiadm -m node -p '${target}:${port}'",
         require => Class['::iscsi::initiator::package'],
