@@ -16,6 +16,8 @@ class iscsi::target::package (
         Array[String[1], 1]         $names,
     ) {
 
+    include '::iscsi::target::service'
+
     package { $names:
         ensure => installed,
         notify => Class['::iscsi::target::service'],
