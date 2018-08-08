@@ -8,14 +8,16 @@
 #
 # === Copyright
 #
-# Copyright 2015-2017 John Florian
+# This file is part of the doubledog-iscsi Puppet module.
+# Copyright 2015-2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 define iscsi::initiator (
         Boolean $enable_chap = true,
         Optional[String[1]] $password,
         Optional[String[1]] $user,
-        Variant[Boolean, Enum['present', 'absent']] $ensure='present',
+        Ddolib::File::Ensure $ensure='present',
         Integer[0, 65535] $port=3260,
         String[1] $target=$title,
     ) {
