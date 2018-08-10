@@ -18,9 +18,18 @@ class iscsi::initiator::service (
         Boolean                 $enable,
         Ddolib::Service::Ensure $ensure,
         Array[String[1], 1]     $names,
+        Optional[String[1]]     $initiator_name = undef,
     ) {
 
     include 'iscsi::initiator::package'
+
+    if $initiator_name {
+        file { '/etc/iscsi/initiatorname.iscsi':
+            content => "InitiatorName=${initiator_name}\n",
+            notify  => Service[$names],
+            require => Class['iscsi::initiator::package'],
+        }
+    }
 
     service { $names:
         ensure     => $ensure,

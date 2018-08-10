@@ -9,6 +9,7 @@ iscsi::initiator::package::names:
     - iscsi-initiator-utils
 iscsi::initiator::service::enable:          true
 iscsi::initiator::service::ensure:          running
+iscsi::initiator::service::initiator_name:  null
 iscsi::initiator::service::names:
     - iscsid
 

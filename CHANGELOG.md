@@ -22,6 +22,7 @@ All notable changes to this project (since v1.1.0) will be documented in this fi
 ## [1.4.0] WIP
 ### Added
 - Puppet 6 compatibility
+- `iscsi::initiator::service::initiator_name` parameter
 ### Changed
 - `validate_absolute_path()` function to `Stdlib::Absolutepath` data type
 ### Deprecated
