@@ -21,10 +21,12 @@ All notable changes to this project (since v1.1.0) will be documented in this fi
 
 ## [1.2.0] WIP
 ### Added
+- Fedora 28/29 support
 ### Changed
 - puppetlabs-stdlib dependency now allows version 5
 ### Deprecated
 ### Removed
+- Fedora 25/26 support
 ### Fixed
 ### Security
 
