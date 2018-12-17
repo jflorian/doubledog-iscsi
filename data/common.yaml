@@ -6,6 +6,7 @@ iscsi::initiator::service::enable:          true
 iscsi::initiator::service::ensure:          running
 iscsi::initiator::service::names:
     - iscsid
+iscsi::initiator::service::initiator_name:  ~
 iscsi::target::package::ensure:             installed
 iscsi::target::package::names:
     - scsi-target-utils
