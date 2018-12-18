@@ -1,0 +1,9 @@
+fixtures:
+    symlinks:
+      iscsi: "#{source_dir}"
+    repositories:
+      ddolib:
+        repo: https://github.com/jflorian/doubledog-ddolib.git
+    forge_modules:
+      firewall: puppetlabs-firewall
+      stdlib:   puppetlabs-stdlib
