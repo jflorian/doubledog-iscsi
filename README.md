@@ -1,3 +1,9 @@
+<!--
+This file is part of the doubledog-iscsi Puppet module.
+Copyright 2015-2019 John Florian <jflorian@doubledog.org>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 # iscsi
 
 #### Table of Contents
@@ -19,7 +25,7 @@
 Presently this module allows you to manage iSCSI targets using
 scsi-target-utils and iSCSI initiators using iscsi-initiator-utils.  It was
 first developed against Fedora 21 using Puppet-3.6.  It's since been used on Fedora
-23 through Fedora 27 and also on CentOS 7.
+23 through Fedora 29 and also on CentOS 7.
 
 Using the [iscsi::target](#iscsitarget-defined-type) definition from this
 module you can quickly provision an iSCSI target on your network.  This is
@@ -283,8 +289,11 @@ arbitrary value.
 
 ## Limitations
 
-Tested on Fedora 27 and CentOS 7, but likely to work on any Red Hat variant.
-See `data/common.yaml` for the most likely obstructions.  If "one size can't fit all", the value should be moved from `data/common.yaml` to `data/os/%{facts.os.name}.yaml` instead.  See `hiera.yaml` for how this is handled.
+Tested on Fedora 29 and CentOS 7, but likely to work on any Red Hat variant.
+See `data/common.yaml` for the most likely obstructions.  If "one size can't
+fit all", the value should be moved from `data/common.yaml` to
+`data/os/%{facts.os.name}.yaml` instead.  See `hiera.yaml` for how this is
+handled.
 
 This should be compatible with Puppet 3.x and is being used with Puppet 4.x as
 well.
