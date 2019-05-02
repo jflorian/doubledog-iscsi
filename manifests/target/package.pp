@@ -8,7 +8,9 @@
 #
 # === Copyright
 #
-# Copyright 2017 John Florian
+# This file is part of the doubledog-iscsi Puppet module.
+# Copyright 2017-2019 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 class iscsi::target::package (
@@ -18,7 +20,7 @@ class iscsi::target::package (
 
     package { $names:
         ensure => installed,
-        notify => Class['::iscsi::target::service'],
+        notify => Class['iscsi::target::service'],
     }
 
     file { '/etc/tgt/targets.conf':
@@ -28,8 +30,8 @@ class iscsi::target::package (
         seluser   => 'system_u',
         selrole   => 'object_r',
         seltype   => 'etc_t',
-        before    => Class['::iscsi::target::service'],
-        notify    => Class['::iscsi::target::service'],
+        before    => Class['iscsi::target::service'],
+        notify    => Class['iscsi::target::service'],
         subscribe => Package[$names],
         content   => template('iscsi/target-defaults.conf.erb'),
         show_diff => false,

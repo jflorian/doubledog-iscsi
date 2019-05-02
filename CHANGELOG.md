@@ -25,6 +25,7 @@ All notable changes to this project (since v1.1.0) will be documented in this fi
 ### Changed
 - dependency on `doubledog/ddolib` now expects 1 >= version < 2
 ### Deprecated
+- Absolute namespace references have been eliminated since modern Puppet versions no longer require this.
 ### Removed
 - Fedora 27 support
 ### Fixed

@@ -9,7 +9,7 @@
 # === Copyright
 #
 # This file is part of the doubledog-iscsi Puppet module.
-# Copyright 2015-2018 John Florian
+# Copyright 2015-2019 John Florian
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
@@ -19,7 +19,7 @@ class iscsi::initiator::service (
         Array[String[1], 1]     $names,
     ) {
 
-    include '::iscsi::initiator::package'
+    include 'iscsi::initiator::package'
 
     service { $names:
         ensure     => $ensure,

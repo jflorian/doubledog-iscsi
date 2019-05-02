@@ -9,7 +9,7 @@
 # === Copyright
 #
 # This file is part of the doubledog-iscsi Puppet module.
-# Copyright 2015-2018 John Florian
+# Copyright 2015-2019 John Florian
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
@@ -20,7 +20,7 @@ class iscsi::target::service (
         Array[String[1], 1]     $names,
     ) {
 
-    include '::iscsi::target::package'
+    include 'iscsi::target::package'
 
     if $manage_firewall {
         firewall { '500 accept iSCSI target packets':
