@@ -295,8 +295,7 @@ fit all", the value should be moved from `data/common.yaml` to
 `data/os/%{facts.os.name}.yaml` instead.  See `hiera.yaml` for how this is
 handled.
 
-This should be compatible with Puppet 3.x and is being used with Puppet 4.x as
-well.
+This should be compatible with Puppet 4 and later.
 
 ## Development
 
