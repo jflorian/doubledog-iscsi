@@ -23,6 +23,7 @@ All notable changes to this project (since v1.1.0) will be documented in this fi
 ### Added
 - Fedora 30 support
 ### Changed
+- dependency on `doubledog/ddolib` now expects 1 >= version < 2
 ### Deprecated
 ### Removed
 - Fedora 27 support
