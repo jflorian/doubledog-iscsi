@@ -9,7 +9,7 @@
 # === Copyright
 #
 # This file is part of the doubledog-iscsi Puppet module.
-# Copyright 2015-2018 John Florian
+# Copyright 2015-2019 John Florian
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
@@ -22,8 +22,8 @@ define iscsi::initiator (
         String[1] $target=$title,
     ) {
 
-    include '::iscsi::initiator::package'
-    include '::iscsi::initiator::service'
+    include 'iscsi::initiator::package'
+    include 'iscsi::initiator::service'
 
     if !defined(File['/etc/iscsi/iscsid.conf']) {
         file { '/etc/iscsi/iscsid.conf':
@@ -34,9 +34,9 @@ define iscsi::initiator (
             seluser   => 'system_u',
             selrole   => 'object_r',
             seltype   => 'etc_t',
-            before    => Class['::iscsi::initiator::service'],
-            notify    => Class['::iscsi::initiator::service'],
-            subscribe => Class['::iscsi::initiator::package'],
+            before    => Class['iscsi::initiator::service'],
+            notify    => Class['iscsi::initiator::service'],
+            subscribe => Class['iscsi::initiator::package'],
             content   => template('iscsi/iscsid.conf.erb'),
             show_diff => false,
         }
@@ -45,8 +45,8 @@ define iscsi::initiator (
     exec { "discover iSCSI targets at '${target}:${port}'":
         command => "iscsiadm -m discovery -t sendtargets -p ${target}:${port} -l",
         unless  => "iscsiadm -m node -p '${target}:${port}'",
-        require => Class['::iscsi::initiator::package'],
-        notify  => Class['::iscsi::initiator::service'],
+        require => Class['iscsi::initiator::package'],
+        notify  => Class['iscsi::initiator::service'],
     }
 
 }
