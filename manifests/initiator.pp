@@ -1,3 +1,4 @@
+#
 # == Define: iscsi::initiator
 #
 # Manages an iSCSI initiator using the "send targets" discovery method.

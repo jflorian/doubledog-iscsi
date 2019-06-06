@@ -1,3 +1,4 @@
+#
 # == Define: iscsi::target
 #
 # Manages an iSCSI target.

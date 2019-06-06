@@ -1,7 +1,7 @@
 <!--
-# This file is part of the doubledog-iscsi Puppet module.
-# Copyright 2018-2019 John Florian
-# SPDX-License-Identifier: GPL-3.0-or-later
+This file is part of the doubledog-iscsi Puppet module.
+Copyright 2018-2019 John Florian
+SPDX-License-Identifier: GPL-3.0-or-later
 
 Template
 

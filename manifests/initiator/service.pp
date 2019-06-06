@@ -1,3 +1,4 @@
+#
 # == Class: iscsi::initiator::service
 #
 # Manages the iSCSI initiator service on a host.
