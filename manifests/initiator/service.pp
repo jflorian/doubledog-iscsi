@@ -18,7 +18,7 @@ class iscsi::initiator::service (
         Boolean                 $enable,
         Ddolib::Service::Ensure $ensure,
         Array[String[1], 1]     $names,
-        Optional[String[1]]     $initiator_name = undef,
+        Optional[String[1]]     $initiator_name,
     ) {
 
     include 'iscsi::initiator::package'
