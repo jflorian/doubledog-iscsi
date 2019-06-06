@@ -19,16 +19,12 @@ Template
 
 All notable changes to this project (since v1.1.0) will be documented in this file.  The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [1.4.0] WIP
+## [1.4.0] 2019-06-06
 ### Added
 - Puppet 6 compatibility
 - `iscsi::initiator::service::initiator_name` parameter
 ### Changed
 - `validate_absolute_path()` function to `Stdlib::Absolutepath` data type
-### Deprecated
-### Removed
-### Fixed
-### Security
 
 ## [1.3.0] 2019-05-02
 ### Added
