@@ -1,3 +1,4 @@
+#
 # == Class: iscsi::initiator::package
 #
 # Manages the iSCSI initiator package on a host.

@@ -1,3 +1,4 @@
+#
 # == Class: iscsi::target::package
 #
 # Manages the iSCSI target package on a host.

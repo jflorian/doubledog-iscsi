@@ -1,3 +1,4 @@
+#
 # == Define: iscsi::target
 #
 # Manages an iSCSI target.
@@ -14,15 +15,13 @@
 
 
 define iscsi::target (
-        String[1] $backing,
-        String[1] $password,
-        String[1] $user,
-        Ddolib::File::Ensure $ensure='present',
-        Optional[String[1]] $ipaddress=undef,
-        String[1] $iqn=$title,
+        Stdlib::Absolutepath    $backing,
+        String[1]               $password,
+        String[1]               $user,
+        Ddolib::File::Ensure    $ensure='present',
+        Optional[String[1]]     $ipaddress=undef,
+        String[1]               $iqn=$title,
     ) {
-
-    validate_absolute_path($backing)
 
     include 'iscsi::target::package'
     include 'iscsi::target::service'
