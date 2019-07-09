@@ -18,9 +18,9 @@ define iscsi::target (
         Stdlib::Absolutepath    $backing,
         String[1]               $password,
         String[1]               $user,
+        String[1]               $iqn=$title,
         Ddolib::File::Ensure    $ensure='present',
         Optional[String[1]]     $ipaddress=undef,
-        String[1]               $iqn=$title,
     ) {
 
     include 'iscsi::target::package'
