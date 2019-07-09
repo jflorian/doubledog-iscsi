@@ -19,18 +19,15 @@ Template
 
 All notable changes to this project (since v1.1.0) will be documented in this file.  The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [1.5.0] WIP
+## [1.5.0] 2019-07-09
 ### Added
 - `Iscsi::Discovery` data type
 - `iscsi::initiator::type` parameter
 ### Changed
 - `iscsi::initiator` now supports all target discovery types and defaults to `SendTargets`, which was assumed in prior versions
 - `puppetlabs-stdlib` dependency now allows version 6
-### Deprecated
-### Removed
 ### Fixed
 - [target discovery recurs with every run](https://github.com/jflorian/doubledog-iscsi/issues/8) on Fedora 30 with `iscsi-initiator-utils-6.2.0.876-8.gitf3c8e90.fc30.x86_64`
-### Security
 
 ## [1.4.0] 2019-06-06
 ### Added
