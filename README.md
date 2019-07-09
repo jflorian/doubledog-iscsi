@@ -251,6 +251,11 @@ Hostname or IP address of the target that is to be connected.
 This may be used in place of `namevar` if it's beneficial to give namevar an
 arbitrary value.
 
+##### `type`
+The [type of discovery](#iscsidiscovery-data-type) to be used for the target.
+The default is `sendtargets`.  Some types may be under development or
+experimental; consult your package documentation for details.
+
 ##### `user`
 The user name the target requires for connection authentication.  Nodes
 that do not require authentication must set this parameter to undefined or

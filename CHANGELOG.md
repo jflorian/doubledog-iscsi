@@ -22,7 +22,9 @@ All notable changes to this project (since v1.1.0) will be documented in this fi
 ## [1.5.0] WIP
 ### Added
 - `Iscsi::Discovery` data type
+- `iscsi::initiator::type` parameter
 ### Changed
+- `iscsi::initiator` now supports all target discovery types and defaults to `SendTargets`, which was assumed in prior versions
 ### Deprecated
 ### Removed
 ### Fixed

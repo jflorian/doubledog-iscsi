@@ -21,6 +21,7 @@ define iscsi::initiator (
         Ddolib::File::Ensure    $ensure='present',
         Integer[0, 65535]       $port=3260,
         String[1]               $target=$title,
+        Iscsi::Discovery        $type='sendtargets',
     ) {
 
     include 'iscsi::initiator::package'
@@ -44,8 +45,8 @@ define iscsi::initiator (
     }
 
     exec { "discover iSCSI targets at '${target}:${port}'":
-        command => "iscsiadm -m discovery -t sendtargets -p ${target}:${port} -l",
-        unless  => "iscsiadm -m discoverydb -t sendtargets -p ${target}:${port} -o show",
+        command => "iscsiadm -m discovery -t ${type} -p ${target}:${port} -l",
+        unless  => "iscsiadm -m discoverydb -t ${type} -p ${target}:${port} -o show",
         require => Class['iscsi::initiator::package'],
         notify  => Class['iscsi::initiator::service'],
     }
