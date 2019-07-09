@@ -17,6 +17,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
     * [Classes](#classes)
     * [Defined types](#defined-types)
+    * [Data types](#data-types)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
 
@@ -138,6 +139,10 @@ for installing/managing their appropriate package(s) and service(s).
 
 * [iscsi::initiator](#iscsiinitiator-defined-type)
 * [iscsi::target](#iscsitarget-defined-type)
+
+**Data types:**
+
+* [Iscsi::Discovery](#iscsidiscovery-data-type)
 
 
 ### Classes
@@ -289,6 +294,14 @@ fields are:
 
 This may be used in place of `namevar` if it's beneficial to give namevar an
 arbitrary value.
+
+
+### Data types
+
+#### `Iscsi::Discovery` data type
+
+Matches acceptable ensure values for types of iSCSI target discovery:
+`sendtargets`, `slp`, `isns`, and `fw`.
 
 
 ## Limitations
