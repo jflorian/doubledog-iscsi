@@ -45,7 +45,7 @@ define iscsi::initiator (
 
     exec { "discover iSCSI targets at '${target}:${port}'":
         command => "iscsiadm -m discovery -t sendtargets -p ${target}:${port} -l",
-        unless  => "iscsiadm -m node -p '${target}:${port}'",
+        unless  => "iscsiadm -m discoverydb -t sendtargets -p ${target}:${port} -o show",
         require => Class['iscsi::initiator::package'],
         notify  => Class['iscsi::initiator::service'],
     }
