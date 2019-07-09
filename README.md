@@ -17,6 +17,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
     * [Classes](#classes)
     * [Defined types](#defined-types)
+    * [Data types](#data-types)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
 
@@ -25,7 +26,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 Presently this module allows you to manage iSCSI targets using
 scsi-target-utils and iSCSI initiators using iscsi-initiator-utils.  It was
 first developed against Fedora 21 using Puppet-3.6.  It's since been used on Fedora
-23 through Fedora 29 and also on CentOS 7.
+23 through Fedora 30 and also on CentOS 7.
 
 Using the [iscsi::target](#iscsitarget-defined-type) definition from this
 module you can quickly provision an iSCSI target on your network.  This is
@@ -139,6 +140,10 @@ for installing/managing their appropriate package(s) and service(s).
 * [iscsi::initiator](#iscsiinitiator-defined-type)
 * [iscsi::target](#iscsitarget-defined-type)
 
+**Data types:**
+
+* [Iscsi::Discovery](#iscsidiscovery-data-type)
+
 
 ### Classes
 
@@ -246,6 +251,11 @@ Hostname or IP address of the target that is to be connected.
 This may be used in place of `namevar` if it's beneficial to give namevar an
 arbitrary value.
 
+##### `type`
+The [type of discovery](#iscsidiscovery-data-type) to be used for the target.
+The default is `sendtargets`.  Some types may be under development or
+experimental; consult your package documentation for details.
+
 ##### `user`
 The user name the target requires for connection authentication.  Nodes
 that do not require authentication must set this parameter to undefined or
@@ -291,9 +301,17 @@ This may be used in place of `namevar` if it's beneficial to give namevar an
 arbitrary value.
 
 
+### Data types
+
+#### `Iscsi::Discovery` data type
+
+Matches acceptable ensure values for types of iSCSI target discovery:
+`sendtargets`, `slp`, `isns`, and `fw`.
+
+
 ## Limitations
 
-Tested on Fedora 29 and CentOS 7, but likely to work on any Red Hat variant.
+Tested on Fedora 30 and CentOS 7, but likely to work on any Red Hat variant.
 See `data/common.yaml` for the most likely obstructions.  If "one size can't
 fit all", the value should be moved from `data/common.yaml` to
 `data/os/%{facts.os.name}.yaml` instead.  See `hiera.yaml` for how this is
