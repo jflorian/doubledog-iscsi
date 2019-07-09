@@ -25,6 +25,7 @@ All notable changes to this project (since v1.1.0) will be documented in this fi
 - `iscsi::initiator::type` parameter
 ### Changed
 - `iscsi::initiator` now supports all target discovery types and defaults to `SendTargets`, which was assumed in prior versions
+- `puppetlabs-stdlib` dependency now allows version 6
 ### Deprecated
 ### Removed
 ### Fixed
